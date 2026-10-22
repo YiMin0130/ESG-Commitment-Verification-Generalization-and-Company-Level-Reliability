@@ -1,0 +1,6 @@
+﻿fold,n_companies,n_paragraphs,companies,evidence_quality::Clear,evidence_quality::Misleading,evidence_quality::N/A,evidence_quality::Not Clear,evidence_status::N/A,evidence_status::No,evidence_status::Yes,paragraphs,promise_status::No,promise_status::Yes,verification_timeline::N/A,verification_timeline::already,verification_timeline::between_2_and_5_years,verification_timeline::more_than_5_years,verification_timeline::within_2_years
+0,10,412,2317|2345|2615|2882|2886|3008|3034|3045|4904|5880,247,0,124,41,71,53,288,412,71,341,71,143,98,93,7
+1,9,398,1301|2207|2327|2330|2395|2892|3017|3231|5871,222,0,129,47,74,55,269,398,74,324,74,137,97,83,7
+2,10,384,1101|1907|2301|2379|2603|2880|2881|2891|4938|6669,195,0,139,50,90,49,245,384,90,294,90,150,79,58,7
+3,10,404,1216|1303|2303|2308|2883|2884|2912|3661|5876|6505,236,1,124,43,65,59,280,404,65,339,65,155,105,72,7
+4,10,402,2002|2382|2383|2412|2454|2609|2885|2887|3711|6446,218,1,139,44,73,66,263,402,73,329,73,133,119,71,6

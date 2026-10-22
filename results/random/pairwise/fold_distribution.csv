@@ -1,0 +1,6 @@
+﻿fold,n_train,n_test,n_train_companies,n_test_companies,n_overlapping_companies,stratification_strategy
+0,1600,400,49,48,48,promise+evidence
+1,1600,400,49,48,48,promise+evidence
+2,1600,400,49,49,49,promise+evidence
+3,1600,400,49,47,47,promise+evidence
+4,1600,400,49,48,48,promise+evidence

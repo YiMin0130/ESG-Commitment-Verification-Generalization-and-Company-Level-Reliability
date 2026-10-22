@@ -1,0 +1,876 @@
+[
+  {
+    "id": "company_qlora",
+    "split": "company",
+    "method": "qlora",
+    "script": "src/run_company_disjoint_5fold.py",
+    "results": "results/company/qlora",
+    "original_directory": "company_disjoint_5fold_results",
+    "arguments": {
+      "--data": {
+        "type": "Path",
+        "required": true
+      },
+      "--output-dir": {
+        "type": "Path",
+        "required": true
+      },
+      "--base-model": {
+        "default": "Qwen/Qwen2.5-7B-Instruct"
+      },
+      "--gpu": {
+        "default": "0"
+      },
+      "--n-splits": {
+        "type": "int",
+        "default": 5
+      },
+      "--seed": {
+        "type": "int",
+        "default": 42
+      },
+      "--max-length": {
+        "type": "int",
+        "default": 4096
+      },
+      "--max-new-tokens": {
+        "type": "int",
+        "default": 160
+      },
+      "--epochs": {
+        "type": "float",
+        "default": 3.0
+      },
+      "--learning-rate": {
+        "type": "float",
+        "default": 0.0001
+      },
+      "--batch-size": {
+        "type": "int",
+        "default": 1
+      },
+      "--grad-accum": {
+        "type": "int",
+        "default": 4
+      },
+      "--lora-r": {
+        "type": "int",
+        "default": 16
+      },
+      "--lora-alpha": {
+        "type": "int",
+        "default": 32
+      },
+      "--lora-dropout": {
+        "type": "float",
+        "default": 0.05
+      },
+      "--prepare-only": {
+        "action": "store_true"
+      },
+      "--resume": {
+        "action": "store_true",
+        "help": "已存在 predictions.json 的 fold 會跳過訓練與推論。"
+      }
+    }
+  },
+  {
+    "id": "company_pairwise",
+    "split": "company",
+    "method": "pairwise",
+    "script": "src/run_company_disjoint_5fold_company_pairwise_ranking.py",
+    "results": "results/company/pairwise",
+    "original_directory": "company_pairwise_disjoint",
+    "arguments": {
+      "--data": {
+        "type": "Path",
+        "required": true
+      },
+      "--output-dir": {
+        "type": "Path",
+        "required": true
+      },
+      "--embedding-model": {
+        "default": "Qwen/Qwen2.5-7B-Instruct",
+        "help": "Frozen embedding backbone."
+      },
+      "--gpu": {
+        "default": "0"
+      },
+      "--n-splits": {
+        "type": "int",
+        "default": 5
+      },
+      "--seed": {
+        "type": "int",
+        "default": 42
+      },
+      "--max-length": {
+        "type": "int",
+        "default": 1024
+      },
+      "--embedding-batch-size": {
+        "type": "int",
+        "default": 1
+      },
+      "--logistic-c": {
+        "type": "float",
+        "default": 1.0,
+        "help": "Inverse L2 regularization strength for LogisticRegression."
+      },
+      "--max-iter": {
+        "type": "int",
+        "default": 5000,
+        "help": "Maximum iterations for LogisticRegression."
+      },
+      "--recompute-embeddings": {
+        "action": "store_true",
+        "help": "Ignore cached paragraph_embeddings.npz and recompute."
+      },
+      "--prepare-only": {
+        "action": "store_true"
+      }
+    }
+  },
+  {
+    "id": "company_ridge",
+    "split": "company",
+    "method": "ridge",
+    "script": "src/run_company_disjoint_5fold_company_regression.py",
+    "results": "results/company/ridge",
+    "original_directory": "company_embedding_ridge_disjoint",
+    "arguments": {
+      "--data": {
+        "type": "Path",
+        "required": true
+      },
+      "--output-dir": {
+        "type": "Path",
+        "required": true
+      },
+      "--embedding-model": {
+        "default": "Qwen/Qwen2.5-7B-Instruct",
+        "help": "Frozen embedding backbone."
+      },
+      "--gpu": {
+        "default": "0"
+      },
+      "--n-splits": {
+        "type": "int",
+        "default": 5
+      },
+      "--seed": {
+        "type": "int",
+        "default": 42
+      },
+      "--max-length": {
+        "type": "int",
+        "default": 1024
+      },
+      "--embedding-batch-size": {
+        "type": "int",
+        "default": 1
+      },
+      "--ridge-alpha": {
+        "type": "float",
+        "default": 10.0,
+        "help": "Ridge L2 regularization strength."
+      },
+      "--recompute-embeddings": {
+        "action": "store_true",
+        "help": "忽略既有 paragraph_embeddings.npz，重新計算 embeddings。"
+      },
+      "--prepare-only": {
+        "action": "store_true"
+      }
+    }
+  },
+  {
+    "id": "company_contrastive",
+    "split": "company",
+    "method": "contrastive",
+    "script": "src/run_company_disjoint_5fold_contrastive_qlora.py",
+    "results": "results/company/contrastive",
+    "original_directory": "company_disjoint_5fold_results_contrastive",
+    "arguments": {
+      "--data": {
+        "type": "Path",
+        "required": true
+      },
+      "--company-info": {
+        "type": "Path",
+        "required": true,
+        "help": "包含 ticker 與 產業 欄位的 company_ECR_CER_BHCR.csv；用於跨公司 contrastive pairing 的產業資訊。"
+      },
+      "--output-dir": {
+        "type": "Path",
+        "required": true
+      },
+      "--base-model": {
+        "default": "Qwen/Qwen2.5-7B-Instruct"
+      },
+      "--gpu": {
+        "default": "0"
+      },
+      "--n-splits": {
+        "type": "int",
+        "default": 5
+      },
+      "--seed": {
+        "type": "int",
+        "default": 42
+      },
+      "--contrastive-lambda": {
+        "type": "float",
+        "default": 0.1
+      },
+      "--contrastive-temperature": {
+        "type": "float",
+        "default": 0.07
+      },
+      "--contrastive-pairs-per-step": {
+        "type": "int",
+        "default": 2
+      },
+      "--contrastive-max-length": {
+        "type": "int",
+        "default": 512
+      },
+      "--contrastive-fields": {
+        "nargs": "+",
+        "default": "FIELDS",
+        "choices": "FIELDS",
+        "help": "輪流用哪些任務標籤建立 supervised contrastive batch。"
+      },
+      "--max-length": {
+        "type": "int",
+        "default": 4096
+      },
+      "--max-new-tokens": {
+        "type": "int",
+        "default": 160
+      },
+      "--epochs": {
+        "type": "float",
+        "default": 3.0
+      },
+      "--learning-rate": {
+        "type": "float",
+        "default": 0.0001
+      },
+      "--batch-size": {
+        "type": "int",
+        "default": 1
+      },
+      "--grad-accum": {
+        "type": "int",
+        "default": 4
+      },
+      "--lora-r": {
+        "type": "int",
+        "default": 16
+      },
+      "--lora-alpha": {
+        "type": "int",
+        "default": 32
+      },
+      "--lora-dropout": {
+        "type": "float",
+        "default": 0.05
+      },
+      "--prepare-only": {
+        "action": "store_true"
+      },
+      "--resume": {
+        "action": "store_true",
+        "help": "已存在 predictions.json 的 fold 會跳過訓練與推論。"
+      }
+    }
+  },
+  {
+    "id": "industry_qlora",
+    "split": "industry",
+    "method": "qlora",
+    "script": "src/run_industry_disjoint_5fold.py",
+    "results": "results/industry/qlora",
+    "original_directory": "industry_disjoint_5fold_results",
+    "arguments": {
+      "--data": {
+        "type": "Path",
+        "required": true
+      },
+      "--company-info": {
+        "type": "Path",
+        "required": true,
+        "help": "包含 ticker 與 產業 欄位的 company_ECR_CER_BHCR.csv。"
+      },
+      "--output-dir": {
+        "type": "Path",
+        "required": true
+      },
+      "--base-model": {
+        "default": "Qwen/Qwen2.5-7B-Instruct"
+      },
+      "--gpu": {
+        "default": "0"
+      },
+      "--n-splits": {
+        "type": "int",
+        "default": 5
+      },
+      "--seed": {
+        "type": "int",
+        "default": 42
+      },
+      "--max-length": {
+        "type": "int",
+        "default": 4096
+      },
+      "--max-new-tokens": {
+        "type": "int",
+        "default": 160
+      },
+      "--epochs": {
+        "type": "float",
+        "default": 3.0
+      },
+      "--learning-rate": {
+        "type": "float",
+        "default": 0.0001
+      },
+      "--batch-size": {
+        "type": "int",
+        "default": 1
+      },
+      "--grad-accum": {
+        "type": "int",
+        "default": 4
+      },
+      "--lora-r": {
+        "type": "int",
+        "default": 16
+      },
+      "--lora-alpha": {
+        "type": "int",
+        "default": 32
+      },
+      "--lora-dropout": {
+        "type": "float",
+        "default": 0.05
+      },
+      "--prepare-only": {
+        "action": "store_true"
+      },
+      "--resume": {
+        "action": "store_true",
+        "help": "已存在 predictions.json 的 fold 會跳過訓練與推論。"
+      }
+    }
+  },
+  {
+    "id": "industry_pairwise",
+    "split": "industry",
+    "method": "pairwise",
+    "script": "src/run_industry_disjoint_5fold_company_pairwise_ranking.py",
+    "results": "results/industry/pairwise",
+    "original_directory": "company_pairwise_industry_disjoint",
+    "arguments": {
+      "--data": {
+        "type": "Path",
+        "required": true
+      },
+      "--company-info": {
+        "type": "Path",
+        "required": true,
+        "help": "包含 ticker 與產業欄位的公司層級 CSV。"
+      },
+      "--output-dir": {
+        "type": "Path",
+        "required": true
+      },
+      "--embedding-model": {
+        "default": "Qwen/Qwen2.5-7B-Instruct",
+        "help": "Frozen embedding backbone."
+      },
+      "--gpu": {
+        "default": "0"
+      },
+      "--n-splits": {
+        "type": "int",
+        "default": 5
+      },
+      "--seed": {
+        "type": "int",
+        "default": 42
+      },
+      "--max-length": {
+        "type": "int",
+        "default": 1024
+      },
+      "--embedding-batch-size": {
+        "type": "int",
+        "default": 1
+      },
+      "--logistic-c": {
+        "type": "float",
+        "default": 1.0,
+        "help": "Inverse L2 regularization strength for LogisticRegression."
+      },
+      "--max-iter": {
+        "type": "int",
+        "default": 5000,
+        "help": "Maximum iterations for LogisticRegression."
+      },
+      "--recompute-embeddings": {
+        "action": "store_true",
+        "help": "Ignore cached paragraph_embeddings.npz and recompute."
+      },
+      "--prepare-only": {
+        "action": "store_true"
+      }
+    }
+  },
+  {
+    "id": "industry_ridge",
+    "split": "industry",
+    "method": "ridge",
+    "script": "src/run_industry_disjoint_5fold_company_regression.py",
+    "results": "results/industry/ridge",
+    "original_directory": "company_embedding_ridge_industry_disjoint",
+    "arguments": {
+      "--data": {
+        "type": "Path",
+        "required": true
+      },
+      "--company-info": {
+        "type": "Path",
+        "required": true,
+        "help": "包含 ticker 與產業欄位的公司層級 CSV。"
+      },
+      "--output-dir": {
+        "type": "Path",
+        "required": true
+      },
+      "--embedding-model": {
+        "default": "Qwen/Qwen2.5-7B-Instruct",
+        "help": "Frozen embedding backbone."
+      },
+      "--gpu": {
+        "default": "0"
+      },
+      "--n-splits": {
+        "type": "int",
+        "default": 5
+      },
+      "--seed": {
+        "type": "int",
+        "default": 42
+      },
+      "--max-length": {
+        "type": "int",
+        "default": 1024
+      },
+      "--embedding-batch-size": {
+        "type": "int",
+        "default": 1
+      },
+      "--ridge-alpha": {
+        "type": "float",
+        "default": 10.0,
+        "help": "Ridge L2 regularization strength."
+      },
+      "--recompute-embeddings": {
+        "action": "store_true",
+        "help": "忽略既有 paragraph_embeddings.npz，重新計算 embeddings。"
+      },
+      "--prepare-only": {
+        "action": "store_true"
+      }
+    }
+  },
+  {
+    "id": "industry_contrastive",
+    "split": "industry",
+    "method": "contrastive",
+    "script": "src/run_industry_disjoint_5fold_contrastive_qlora.py",
+    "results": "results/industry/contrastive",
+    "original_directory": "industry_disjoint_5fold_results_contrastive",
+    "arguments": {
+      "--data": {
+        "type": "Path",
+        "required": true
+      },
+      "--company-info": {
+        "type": "Path",
+        "required": true,
+        "help": "包含 ticker 與 產業 欄位的 company_ECR_CER_BHCR.csv。"
+      },
+      "--output-dir": {
+        "type": "Path",
+        "required": true
+      },
+      "--base-model": {
+        "default": "Qwen/Qwen2.5-7B-Instruct"
+      },
+      "--gpu": {
+        "default": "0"
+      },
+      "--n-splits": {
+        "type": "int",
+        "default": 5
+      },
+      "--seed": {
+        "type": "int",
+        "default": 42
+      },
+      "--contrastive-lambda": {
+        "type": "float",
+        "default": 0.1
+      },
+      "--contrastive-temperature": {
+        "type": "float",
+        "default": 0.07
+      },
+      "--contrastive-pairs-per-step": {
+        "type": "int",
+        "default": 2
+      },
+      "--contrastive-max-length": {
+        "type": "int",
+        "default": 512
+      },
+      "--contrastive-fields": {
+        "nargs": "+",
+        "default": "FIELDS",
+        "choices": "FIELDS",
+        "help": "輪流用哪些任務標籤建立 supervised contrastive batch。"
+      },
+      "--max-length": {
+        "type": "int",
+        "default": 4096
+      },
+      "--max-new-tokens": {
+        "type": "int",
+        "default": 160
+      },
+      "--epochs": {
+        "type": "float",
+        "default": 3.0
+      },
+      "--learning-rate": {
+        "type": "float",
+        "default": 0.0001
+      },
+      "--batch-size": {
+        "type": "int",
+        "default": 1
+      },
+      "--grad-accum": {
+        "type": "int",
+        "default": 4
+      },
+      "--lora-r": {
+        "type": "int",
+        "default": 16
+      },
+      "--lora-alpha": {
+        "type": "int",
+        "default": 32
+      },
+      "--lora-dropout": {
+        "type": "float",
+        "default": 0.05
+      },
+      "--prepare-only": {
+        "action": "store_true"
+      },
+      "--resume": {
+        "action": "store_true",
+        "help": "已存在 predictions.json 的 fold 會跳過訓練與推論。"
+      }
+    }
+  },
+  {
+    "id": "random_qlora",
+    "split": "random",
+    "method": "qlora",
+    "script": "src/run_random_5fold.py",
+    "results": "results/random/qlora",
+    "original_directory": "random_5fold_results",
+    "arguments": {
+      "--data": {
+        "type": "Path",
+        "required": true
+      },
+      "--output-dir": {
+        "type": "Path",
+        "required": true
+      },
+      "--base-model": {
+        "default": "Qwen/Qwen2.5-7B-Instruct"
+      },
+      "--gpu": {
+        "default": "0"
+      },
+      "--n-splits": {
+        "type": "int",
+        "default": 5
+      },
+      "--seed": {
+        "type": "int",
+        "default": 42
+      },
+      "--max-length": {
+        "type": "int",
+        "default": 4096
+      },
+      "--max-new-tokens": {
+        "type": "int",
+        "default": 160
+      },
+      "--epochs": {
+        "type": "float",
+        "default": 3.0
+      },
+      "--learning-rate": {
+        "type": "float",
+        "default": 0.0001
+      },
+      "--batch-size": {
+        "type": "int",
+        "default": 1
+      },
+      "--grad-accum": {
+        "type": "int",
+        "default": 4
+      },
+      "--lora-r": {
+        "type": "int",
+        "default": 16
+      },
+      "--lora-alpha": {
+        "type": "int",
+        "default": 32
+      },
+      "--lora-dropout": {
+        "type": "float",
+        "default": 0.05
+      },
+      "--prepare-only": {
+        "action": "store_true"
+      },
+      "--resume": {
+        "action": "store_true",
+        "help": "已存在 predictions.json 的 fold 會跳過訓練與推論。"
+      }
+    }
+  },
+  {
+    "id": "random_pairwise",
+    "split": "random",
+    "method": "pairwise",
+    "script": "src/run_random_5fold_company_pairwise_ranking.py",
+    "results": "results/random/pairwise",
+    "original_directory": "company_pairwise_random",
+    "arguments": {
+      "--data": {
+        "type": "Path",
+        "required": true
+      },
+      "--output-dir": {
+        "type": "Path",
+        "required": true
+      },
+      "--embedding-model": {
+        "default": "Qwen/Qwen2.5-7B-Instruct",
+        "help": "Frozen embedding backbone."
+      },
+      "--gpu": {
+        "default": "0"
+      },
+      "--n-splits": {
+        "type": "int",
+        "default": 5
+      },
+      "--seed": {
+        "type": "int",
+        "default": 42
+      },
+      "--max-length": {
+        "type": "int",
+        "default": 1024
+      },
+      "--embedding-batch-size": {
+        "type": "int",
+        "default": 1
+      },
+      "--logistic-c": {
+        "type": "float",
+        "default": 1.0,
+        "help": "Inverse L2 regularization strength for LogisticRegression."
+      },
+      "--max-iter": {
+        "type": "int",
+        "default": 5000,
+        "help": "Maximum iterations for LogisticRegression."
+      },
+      "--recompute-embeddings": {
+        "action": "store_true",
+        "help": "Ignore cached paragraph_embeddings.npz and recompute."
+      },
+      "--prepare-only": {
+        "action": "store_true"
+      }
+    }
+  },
+  {
+    "id": "random_ridge",
+    "split": "random",
+    "method": "ridge",
+    "script": "src/run_random_5fold_company_regression.py",
+    "results": "results/random/ridge",
+    "original_directory": "company_embedding_ridge_random",
+    "arguments": {
+      "--data": {
+        "type": "Path",
+        "required": true
+      },
+      "--output-dir": {
+        "type": "Path",
+        "required": true
+      },
+      "--embedding-model": {
+        "default": "Qwen/Qwen2.5-7B-Instruct",
+        "help": "Frozen embedding backbone."
+      },
+      "--gpu": {
+        "default": "0"
+      },
+      "--n-splits": {
+        "type": "int",
+        "default": 5
+      },
+      "--seed": {
+        "type": "int",
+        "default": 42
+      },
+      "--max-length": {
+        "type": "int",
+        "default": 1024
+      },
+      "--embedding-batch-size": {
+        "type": "int",
+        "default": 1
+      },
+      "--ridge-alpha": {
+        "type": "float",
+        "default": 10.0,
+        "help": "Ridge L2 regularization strength."
+      },
+      "--recompute-embeddings": {
+        "action": "store_true",
+        "help": "忽略既有 paragraph_embeddings.npz，重新計算 embeddings。"
+      },
+      "--prepare-only": {
+        "action": "store_true"
+      }
+    }
+  },
+  {
+    "id": "random_contrastive",
+    "split": "random",
+    "method": "contrastive",
+    "script": "src/run_random_5fold_contrastive_qlora.py",
+    "results": "results/random/contrastive",
+    "original_directory": "random_5fold_results_contrastive",
+    "arguments": {
+      "--data": {
+        "type": "Path",
+        "required": true
+      },
+      "--output-dir": {
+        "type": "Path",
+        "required": true
+      },
+      "--base-model": {
+        "default": "Qwen/Qwen2.5-7B-Instruct"
+      },
+      "--gpu": {
+        "default": "0"
+      },
+      "--n-splits": {
+        "type": "int",
+        "default": 5
+      },
+      "--seed": {
+        "type": "int",
+        "default": 42
+      },
+      "--contrastive-lambda": {
+        "type": "float",
+        "default": 0.1
+      },
+      "--contrastive-temperature": {
+        "type": "float",
+        "default": 0.07
+      },
+      "--contrastive-pairs-per-step": {
+        "type": "int",
+        "default": 2
+      },
+      "--contrastive-max-length": {
+        "type": "int",
+        "default": 512
+      },
+      "--contrastive-fields": {
+        "nargs": "+",
+        "default": "FIELDS",
+        "choices": "FIELDS",
+        "help": "輪流用哪些任務標籤建立 supervised contrastive batch。"
+      },
+      "--max-length": {
+        "type": "int",
+        "default": 4096
+      },
+      "--max-new-tokens": {
+        "type": "int",
+        "default": 160
+      },
+      "--epochs": {
+        "type": "float",
+        "default": 3.0
+      },
+      "--learning-rate": {
+        "type": "float",
+        "default": 0.0001
+      },
+      "--batch-size": {
+        "type": "int",
+        "default": 1
+      },
+      "--grad-accum": {
+        "type": "int",
+        "default": 4
+      },
+      "--lora-r": {
+        "type": "int",
+        "default": 16
+      },
+      "--lora-alpha": {
+        "type": "int",
+        "default": 32
+      },
+      "--lora-dropout": {
+        "type": "float",
+        "default": 0.05
+      },
+      "--prepare-only": {
+        "action": "store_true"
+      },
+      "--resume": {
+        "action": "store_true",
+        "help": "已存在 predictions.json 的 fold 會跳過訓練與推論。"
+      }
+    }
+  }
+]

@@ -1,0 +1,9 @@
+{
+  "reference_version": "Corrected manuscript aligned with Qwen_no_adapter results, 2026-10-22",
+  "pdf_sha256": "60d09e319bb460ed17e6d1ff261407efac08f31b8c64d74aed82fadc2e6bae80",
+  "latex_sha256": "2039ec2deda5cefc583f5136fc7765013181cbf57845f207b956f8b4613ca3b3",
+  "numbers_compared": 464,
+  "mismatches": 0,
+  "narrative_checks": 13,
+  "narrative_failures": 0
+}

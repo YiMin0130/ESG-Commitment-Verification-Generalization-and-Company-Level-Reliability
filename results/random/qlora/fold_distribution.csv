@@ -1,0 +1,6 @@
+﻿fold,n_train,n_test,n_train_companies,n_test_companies,n_overlapping_companies,stratification_strategy,test::promise_status::Yes,test::promise_status::No,test::verification_timeline::already,test::verification_timeline::within_2_years,test::verification_timeline::between_2_and_5_years,test::verification_timeline::more_than_5_years,test::verification_timeline::N/A,test::evidence_status::Yes,test::evidence_status::No,test::evidence_status::N/A,test::evidence_quality::Clear,test::evidence_quality::Not Clear,test::evidence_quality::Misleading,test::evidence_quality::N/A
+0,1600,400,49,48,48,promise+evidence,326,74,137,6,108,75,74,269,57,74,222,46,1,131
+1,1600,400,49,48,48,promise+evidence,326,74,153,4,92,77,74,269,57,74,224,45,0,131
+2,1600,400,49,49,49,promise+evidence,325,75,138,6,105,76,75,269,56,75,229,40,0,131
+3,1600,400,49,47,47,promise+evidence,325,75,153,9,84,79,75,269,56,75,219,50,0,131
+4,1600,400,49,48,48,promise+evidence,325,75,137,9,109,70,75,269,56,75,224,44,1,131

@@ -1,0 +1,13 @@
+# Inferred from imports; original environment versions were not supplied.
+# Install a CUDA-compatible torch build first. No exact replay guarantee.
+torch
+transformers
+peft
+datasets
+bitsandbytes
+accelerate
+numpy
+pandas
+scipy
+scikit-learn
+tqdm

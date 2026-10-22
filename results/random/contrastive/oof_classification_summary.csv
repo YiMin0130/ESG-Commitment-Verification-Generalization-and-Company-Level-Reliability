@@ -1,0 +1,5 @@
+﻿fold,field,n_samples,accuracy,balanced_accuracy,macro_f1
+OOF_global,promise_status,2000,0.8895,0.8019043585869154,0.811816798118168
+OOF_global,verification_timeline,2000,0.6215,0.5809787047433828,0.6031657544377509
+OOF_global,evidence_status,2000,0.7825,0.675360302918644,0.6895369847543761
+OOF_global,evidence_quality,2000,0.718,0.4480046535904871,0.4513017149985198

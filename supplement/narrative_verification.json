@@ -1,0 +1,190 @@
+{
+  "checks": [
+    {
+      "claim": "Unseen-company three original tasks decline by 0.0037\u20130.0117",
+      "passed": true,
+      "observed": {
+        "promise_status": 0.011732358181114289,
+        "verification_timeline": -0.00534070484674487,
+        "evidence_status": 0.008094853161515814,
+        "evidence_quality": 0.0036766376725441696
+      }
+    },
+    {
+      "claim": "Unseen-company original timeline improves by 0.0053",
+      "passed": true,
+      "observed": 0.00534070484674487
+    },
+    {
+      "claim": "All unseen-industry original tasks decline by 0.0136\u20130.0198",
+      "passed": true,
+      "observed": {
+        "promise_status": 0.019305483442519256,
+        "verification_timeline": 0.019823222344319213,
+        "evidence_status": 0.018236578035481843,
+        "evidence_quality": 0.013592342708940774
+      }
+    },
+    {
+      "claim": "Largest original industry decline is timeline",
+      "passed": true,
+      "observed": {
+        "promise_status": 0.019305483442519256,
+        "verification_timeline": 0.019823222344319213,
+        "evidence_status": 0.018236578035481843,
+        "evidence_quality": 0.013592342708940774
+      }
+    },
+    {
+      "claim": "Contrastive improves three unseen-company tasks",
+      "passed": true,
+      "observed": {
+        "promise_status": 0.002605659297476026,
+        "verification_timeline": -0.03287205457673781,
+        "evidence_status": 0.007389635623830881,
+        "evidence_quality": 0.00966981501635611
+      }
+    },
+    {
+      "claim": "Company contrastive timeline drops 0.0329",
+      "passed": true,
+      "observed": -0.03287205457673781
+    },
+    {
+      "claim": "Industry contrastive timeline drops 0.0120",
+      "passed": true,
+      "observed": -0.011985004116481401
+    },
+    {
+      "claim": "Industry evidence quality 0.4274 to 0.4401 approaches Seen 0.4410",
+      "passed": true,
+      "observed": [
+        0.42744303429669456,
+        0.44008585852993976,
+        0.44103537700563533
+      ]
+    },
+    {
+      "claim": "Unseen M1/M2 mae range",
+      "passed": true,
+      "observed": [
+        0.08832352242131201,
+        0.13315021713136627
+      ]
+    },
+    {
+      "claim": "Unseen M1/M2 rmse range",
+      "passed": true,
+      "observed": [
+        0.11927531863558305,
+        0.1588068181054709
+      ]
+    },
+    {
+      "claim": "M2 lower company CER MAE; M1 lower ECR/BHCR MAE",
+      "passed": true,
+      "observed": {
+        "ECR": {
+          "qlora": 0.10955745383612822,
+          "ridge": 0.11977347981743529
+        },
+        "CER": {
+          "qlora": 0.11177398063339769,
+          "ridge": 0.09914841710763286
+        },
+        "BHCR": {
+          "qlora": 0.08832352242131201,
+          "ridge": 0.102272485967625
+        }
+      }
+    },
+    {
+      "claim": "Company ECR Spearman M1/M2/M3 0.338/0.329/0.352",
+      "passed": true,
+      "observed": [
+        0.33773731836590376,
+        0.32930917882258015,
+        0.3515464707608547
+      ]
+    },
+    {
+      "claim": "All 18 unseen-industry ranking intervals include zero",
+      "passed": true,
+      "observed": [
+        [
+          -0.43007231459490125,
+          0.7042644191945635
+        ],
+        [
+          -0.27029817899976655,
+          0.5326544495062366
+        ],
+        [
+          -0.4448943324302709,
+          0.4721368816689733
+        ],
+        [
+          -0.33894578966627115,
+          0.34998602840345655
+        ],
+        [
+          -0.07206876018733477,
+          0.45453962265819725
+        ],
+        [
+          -0.03771223261877221,
+          0.3476112225177621
+        ],
+        [
+          -0.5780178941845638,
+          0.38105027703168703
+        ],
+        [
+          -0.45057163604411665,
+          0.2725893316813397
+        ],
+        [
+          -0.4219725601023465,
+          0.5379698034144728
+        ],
+        [
+          -0.2932567569597473,
+          0.33750064872345986
+        ],
+        [
+          -0.5355120549213486,
+          0.3787687981780917
+        ],
+        [
+          -0.4036685597850609,
+          0.24932512544162655
+        ],
+        [
+          -0.45274556285518996,
+          0.3541304213131743
+        ],
+        [
+          -0.2898838138645873,
+          0.23704102221473358
+        ],
+        [
+          -0.18623501428900496,
+          0.5853411624929157
+        ],
+        [
+          -0.1273681721109276,
+          0.3535526755258966
+        ],
+        [
+          -0.5079278166272118,
+          0.39607966477905987
+        ],
+        [
+          -0.3900706970623954,
+          0.2567373637290621
+        ]
+      ]
+    }
+  ],
+  "failures": 0
+}

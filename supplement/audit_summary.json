@@ -1,0 +1,10 @@
+{
+  "experiments": 12,
+  "folds": 60,
+  "records": 2000,
+  "companies": 49,
+  "industries": 18,
+  "metrics": 1035,
+  "summaries": 207,
+  "issues": []
+}

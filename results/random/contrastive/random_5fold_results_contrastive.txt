@@ -1,0 +1,28 @@
+================================================================================
+5-fold 完成
+================================================================================
+
+段落級 mean ± std：
+                field  accuracy_mean  accuracy_std  balanced_accuracy_mean  balanced_accuracy_std  macro_f1_mean  macro_f1_std
+     evidence_quality         0.7180        0.0120                  0.5387                 0.0845         0.4510        0.0130
+      evidence_status         0.7825        0.0135                  0.6753                 0.0234         0.6889        0.0195
+       promise_status         0.8895        0.0099                  0.8019                 0.0241         0.8115        0.0192
+verification_timeline         0.6215        0.0298                  0.5807                 0.0772         0.5923        0.0733
+
+企業指標 fold mean ± std：
+indicator  mae_mean  mae_std  rmse_mean  rmse_std  spearman_mean  spearman_std  kendall_mean  kendall_std
+     BHCR    0.1154   0.0117     0.1678    0.0174         0.4250        0.0545        0.3384       0.0433
+      CER    0.1734   0.0339     0.2584    0.0468         0.1518        0.1037        0.1274       0.0857
+      ECR    0.1351   0.0200     0.1972    0.0249         0.3801        0.1526        0.3037       0.1273
+
+OOF 全企業結果：
+      fold indicator  n_companies    mae   rmse  spearman_rho  spearman_p  kendall_tau_b  kendall_p  n_spearman
+OOF_global       ECR           49 0.0966 0.1282        0.3077      0.0315         0.2262     0.0232          49
+OOF_global       CER           49 0.0985 0.1455        0.1249      0.3924         0.0937     0.3469          49
+OOF_global      BHCR           49 0.0840 0.1167        0.2560      0.0759         0.1900     0.0545          49
+
+論文用 RQ 輸出：
+RQ1: results/random/contrastive/RQ1_cross_company_generalization.csv
+RQ2: results/random/contrastive/RQ2_inter_company_relationship.csv
+
+輸出資料夾：results/random/contrastive

@@ -1,0 +1,127 @@
+{
+  "files_scanned": 681,
+  "findings": [],
+  "embedding_caches": [
+    {
+      "path": "results/company/pairwise/paragraph_embeddings.npz",
+      "arrays": [
+        {
+          "name": "ids.npy",
+          "dtype": "<U5",
+          "shape": [
+            2000
+          ]
+        },
+        {
+          "name": "embeddings.npy",
+          "dtype": "<f4",
+          "shape": [
+            2000,
+            3584
+          ]
+        }
+      ]
+    },
+    {
+      "path": "results/company/ridge/paragraph_embeddings.npz",
+      "arrays": [
+        {
+          "name": "ids.npy",
+          "dtype": "<U5",
+          "shape": [
+            2000
+          ]
+        },
+        {
+          "name": "embeddings.npy",
+          "dtype": "<f4",
+          "shape": [
+            2000,
+            3584
+          ]
+        }
+      ]
+    },
+    {
+      "path": "results/industry/pairwise/paragraph_embeddings.npz",
+      "arrays": [
+        {
+          "name": "ids.npy",
+          "dtype": "<U5",
+          "shape": [
+            2000
+          ]
+        },
+        {
+          "name": "embeddings.npy",
+          "dtype": "<f4",
+          "shape": [
+            2000,
+            3584
+          ]
+        }
+      ]
+    },
+    {
+      "path": "results/industry/ridge/paragraph_embeddings.npz",
+      "arrays": [
+        {
+          "name": "ids.npy",
+          "dtype": "<U5",
+          "shape": [
+            2000
+          ]
+        },
+        {
+          "name": "embeddings.npy",
+          "dtype": "<f4",
+          "shape": [
+            2000,
+            3584
+          ]
+        }
+      ]
+    },
+    {
+      "path": "results/random/pairwise/paragraph_embeddings.npz",
+      "arrays": [
+        {
+          "name": "ids.npy",
+          "dtype": "<U5",
+          "shape": [
+            2000
+          ]
+        },
+        {
+          "name": "embeddings.npy",
+          "dtype": "<f4",
+          "shape": [
+            2000,
+            3584
+          ]
+        }
+      ]
+    },
+    {
+      "path": "results/random/ridge/paragraph_embeddings.npz",
+      "arrays": [
+        {
+          "name": "ids.npy",
+          "dtype": "<U5",
+          "shape": [
+            2000
+          ]
+        },
+        {
+          "name": "embeddings.npy",
+          "dtype": "<f4",
+          "shape": [
+            2000,
+            3584
+          ]
+        }
+      ]
+    }
+  ],
+  "scope": "Static paths, credential patterns, binary array headers and unexpected file types. Public source text/URLs and team/paper attribution are retained; this does not certify author anonymity or dataset redistribution rights."
+}
